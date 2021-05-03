@@ -1,0 +1,16 @@
+aiofiles==0.6.0
+certifi==2020.12.5
+contextvars==2.4
+h11==0.9.0
+httpcore==0.11.1
+httptools==0.2.0
+httpx==0.15.4
+idna==3.1
+immutables==0.15
+multidict==5.1.0
+rfc3986==1.4.0
+sanic==20.12.3
+sniffio==1.2.0
+ujson==4.0.2
+uvloop==0.14.0
+websockets==8.1
