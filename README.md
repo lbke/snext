@@ -1,3 +1,18 @@
+# About Snext
+
+Snext is a Next.js application that lets you create API routes in Python.
+
+## Various resources and inspirations
+
+- Plotly Dash: one of the most impressive attempts at isomorphic web programming. Dash let's you use React components in Python to create interactive dashboards https://plotly.com/dash/
+- Official doc about Python in Vercel: https://vercel.com/docs/runtimes#official-runtimes/python
+- https://stackoverflow.com/questions/63190114/call-a-python-script-from-react-with-next-routing-and-a-node-js-server
+- https://medium.com/swlh/build-a-twitter-login-component-using-nextjs-and-python-flask-44c17f057096
+- https://github.com/vercel/next.js/discussions/15846
+
+---
+## About Next
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
