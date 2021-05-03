@@ -31,7 +31,13 @@ source ./venv/bin/activate
 - https://stackoverflow.com/questions/63190114/call-a-python-script-from-react-with-next-routing-and-a-node-js-server
 - https://medium.com/swlh/build-a-twitter-login-component-using-nextjs-and-python-flask-44c17f057096
 - https://github.com/vercel/next.js/discussions/15846
+
 ## Problems to solve
+
+### Underscore in Python folder names
+
+No `-` in folder names in Python, or you're gonna have a bad time importing files... Use underscore `_`.
+This may lead to messy URLs because the folder name is tied to the route name in Next.
 
 ### What server to pick
 
@@ -66,15 +72,12 @@ You'll want everything to run on `localhost:3000`, but you'll have 2 servers in 
 #### Python + Python
 
 Also, we may have multiple API routes, that will act as serverless functions when deployed. But locally, we must make them one server.
+We have a partial solution with Sanic Dispatcher, see "python-server.py".
 
 - How is it solved in Next for JS API routes?
-
-#### Partial solution: dispatching to multiple WSGI servers (eg 2 flasks application)
-
 -  https://peterhaas-me.medium.com/how-to-run-multiple-flask-applications-from-the-same-server-9ca2c0ad7bb3
 -  https://werkzeug.palletsprojects.com/en/1.0.x/middleware/dispatcher/
-
-
+- Same with Sanic: https://github.com/ashleysommer/sanic-dispatcher/blob/master/sanic_dispatcher/extension.py#L131
 
 ---
 ## About Next

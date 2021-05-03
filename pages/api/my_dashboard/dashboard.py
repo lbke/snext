@@ -2,7 +2,7 @@
 # @see https://sanic.readthedocs.io/en/stable/
 from sanic import Sanic
 from sanic.response import json
-app = Sanic("data")
+app = Sanic("dashboard")
 
 
 @app.route('/')
