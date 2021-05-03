@@ -2,11 +2,13 @@
 
 Snext is a Next.js application that lets you create API routes in Python.
 
-Snext, because it sounds like "snake". Like a python.
+Snext, because it sounds like "snake"🐍. You know, like a Python.
+
+**/!\ /!\ /!\ This is an early experiment, and doesn't actually work!**
 
 ## Start with Python
 
-I suggest using Pyenv to install Python: https://github.com/pyenv/pyenv. Consider it as an equivalent to Node Version Manager or Volta.
+I suggest using [Pyenv](https://github.com/pyenv/pyenv) to install Python. Consider it as an equivalent to Node Version Manager or Volta but for Python.
 
 ### Very first run
 
@@ -34,12 +36,54 @@ source ./venv/bin/activate
 - https://medium.com/swlh/build-a-twitter-login-component-using-nextjs-and-python-flask-44c17f057096
 - https://github.com/vercel/next.js/discussions/15846
 
-## Problems to solve
+## Main blockers
+
+### Running 2 (or more) servers on the same port
+
+#### Node + Python
+
+When running Next, you'll want everything to run on `localhost:3000`, but you'll have 2 servers: one for Node, one for Python. This require some rewriting logic to work.
+
+##### Possible solutions
+
+- Check if Next.js rewrites in next.config.js already allow this
+- Run a 3rd server that handles the redirection
+
+##### Questions
+
+- How is it solved in Next for API routes and frontend?
+
+#### Python + Python
+
+Also, we may have multiple API routes, that will act as serverless functions when deployed. But locally, we must make them one server.
+
+##### Possible solutions
+
+- We have a partial solution with Sanic Dispatcher, see "python-server.py". It rely on a main server, that dispatch the request to Sanic apps, so you have only one server and yet can run multiple API routes
+- We still need to automated the import of relevant routes. Using a kind of Webpack-like magic, but in Python.
+-  https://peterhaas-me.medium.com/how-to-run-multiple-flask-applications-from-the-same-server-9ca2c0ad7bb3
+-  https://werkzeug.palletsprojects.com/en/1.0.x/middleware/dispatcher/
+- Dispatcher for Sanic: https://github.com/ashleysommer/sanic-dispatcher/blob/master/sanic_dispatcher/extension.py#L131
+
+
+##### Questions
+
+- How is it solved in Next for JS API routes?
+
+### Getting static data
+
+The recommended pattern to get static data from you API routes in Next, is to reuse the core logic of the route directly in `getStaticProps`. But this is only possible because both are using JS. With Python, we would need to build the API routes first, run them, and then only build the frontend.
+
+## Secondary issues
 
 ### Underscore in Python folder names
 
 No `-` in folder names in Python, or you're gonna have a bad time importing files... Use underscore `_`.
 This may lead to messy URLs because the folder name is tied to the route name in Next.
+
+#### Possible solutions
+
+- Autogenerate a map of possible routes, or use URL rewriting
 
 ### What server to pick
 
@@ -59,29 +103,8 @@ https://vercel.com/docs/runtimes#advanced-usage/community-runtimes
 In Python, you need a Virtual Environment to isolate your packages between apps, while in JS `node_modules` plays this role. The problem is that the virtual environment must be activated when you start working, so that's an additional step for the developer.
 To make it worse, the `source` command that activate the environment cannot be (last time I've checked) put in `package.json`, so you have to remember the right command everytime.
 
-### Getting static data
-
-The recommended pattern to get static data from you API routes in Next, is to reuse the core logic of the route directly in `getStaticProps`. But this is only possible because both are using JS. With Python, we would need to build the API routes first, run them, and then only build the frontend.
-
-### Running 2 (or more) servers on the same port
-
-#### Node + Python 
-
-You'll want everything to run on `localhost:3000`, but you'll have 2 servers in dev, one for Node, one for Python. This require some rewriting logic to work.
-
-- How is it solved in Next for API routes and frontend?
-
-#### Python + Python
-
-Also, we may have multiple API routes, that will act as serverless functions when deployed. But locally, we must make them one server.
-We have a partial solution with Sanic Dispatcher, see "python-server.py".
-
-- How is it solved in Next for JS API routes?
--  https://peterhaas-me.medium.com/how-to-run-multiple-flask-applications-from-the-same-server-9ca2c0ad7bb3
--  https://werkzeug.palletsprojects.com/en/1.0.x/middleware/dispatcher/
-- Same with Sanic: https://github.com/ashleysommer/sanic-dispatcher/blob/master/sanic_dispatcher/extension.py#L131
-
 ---
+
 ## About Next
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
