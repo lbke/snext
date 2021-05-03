@@ -1,6 +1,8 @@
-# About Snext
+# Getting started with Snext
 
 Snext is a Next.js application that lets you create API routes in Python.
+
+Snext, because it sounds like "snake". Like a python.
 
 ## Start with Python
 
