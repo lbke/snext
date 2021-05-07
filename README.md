@@ -30,6 +30,7 @@ source ./venv/bin/activate
 
 ## Various resources and inspirations
 
+- Discussion on Vercel Github: https://github.com/vercel/vercel/discussions/4023
 - Plotly Dash: one of the most impressive attempts at isomorphic web programming. Dash let's you use React components in Python to create interactive dashboards https://plotly.com/dash/
 - Official doc about Python in Vercel: https://vercel.com/docs/runtimes#official-runtimes/python
 - https://stackoverflow.com/questions/63190114/call-a-python-script-from-react-with-next-routing-and-a-node-js-server
