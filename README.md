@@ -36,13 +36,11 @@ source ./venv/bin/activate
 - https://medium.com/swlh/build-a-twitter-login-component-using-nextjs-and-python-flask-44c17f057096
 - https://github.com/vercel/next.js/discussions/15846
 
-## TODO
-
-- Investigate how much `vercel` CLI can solve our issues (see [https://vercel.com/docs/cli#commands/dev](https://vercel.com/docs/cli#commands/dev))
-
 ## Main blockers
 
 ### Running 2 (or more) servers on the same port
+
+Read https://github.com/vercel/vercel/discussions/6197
 
 #### Node + Python
 
