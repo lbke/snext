@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "vercel dev",
     "build": "next build",
     "start": "next start",
     "setup-venv": "python3 -m venv ./venv/ --without-pip",

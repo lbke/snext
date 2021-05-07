@@ -38,11 +38,24 @@ source ./venv/bin/activate
 
 ## TODO
 
-- Investigate how much `vercel` CLI can solve our issues (see [https://vercel.com/docs/cli#commands/dev](https://vercel.com/docs/cli#commands/dev))
+- [X] Investigate how much `vercel` CLI can solve our issues (see [https://vercel.com/docs/cli#commands/dev](https://vercel.com/docs/cli#commands/dev)) => done, it does!
+- [ ] Test local build
+- [ ] Test vercel deployment
+- [ ] Improve dev experience with Python, which is a bit more tedious than using JS (virtual env)?
 
 ## Main blockers
 
-### Running 2 (or more) servers on the same port
+### 1) Running 2 (or more) servers on the same port for Python and Node SOLVED
+
+#### Solution:
+
+Use Vercel CLI instead of `next dev`.
+
+Vercel CLI command `vercel dev` is able to simulate a serverless environment locally, so you can test your API routes.
+
+If you put all API routes in `./api/`, and use `vercel dev`, you can have both Python and Node.js API routes (and of course the Next.js frontend still works fine).
+
+----
 
 #### Node + Python
 
@@ -69,22 +82,12 @@ Also, we may have multiple API routes, that will act as serverless functions whe
 -  https://werkzeug.palletsprojects.com/en/1.0.x/middleware/dispatcher/
 - Dispatcher for Sanic: https://github.com/ashleysommer/sanic-dispatcher/blob/master/sanic_dispatcher/extension.py#L131
 
-#### About Vercel CLI
 
-Vercel CLI command `vercel dev` is able to simulate a serverless environment locally, so you can test your API routes.
-
-- If you put all routes in `./api/`, `vercel dev` will make Python API routes available + Next pages
-- If you put all API routes in `./pages/api`, `vercel dev` will make Node.js API routes available + Next pages
-
-**This means you have to pick either Python or Node for your API routes, you can't mix both as far as I can tell.**
-
-##### Questions
-
-- How is it solved in Next for JS API routes?
-
-### Getting static data
+### 2) Getting static data
 
 The recommended pattern to get static data from you API routes in Next, is to reuse the core logic of the route directly in `getStaticProps`. But this is only possible because both are using JS. With Python, we would need to build the API routes first, run them, and then only build the frontend.
+
+Needs to be tested with Vercel CLI.
 
 ## Secondary issues
 
@@ -109,6 +112,8 @@ Anyway, all knowledge gathered for one framework should be reusable for any othe
 For simplification, we'll suppose a hosting on Vercel.
 We may need a `vercel.json` to tell Vercel which runtime to use:
 https://vercel.com/docs/runtimes#advanced-usage/community-runtimes
+
+Since Vercel dev works, we should expect Vercel deployment to work out of the box. To be tested.
 
 ### The Virtual Env
 
