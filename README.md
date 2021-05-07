@@ -57,6 +57,8 @@ If you put all API routes in `./api/`, and use `vercel dev`, you can have both P
 
 ----
 
+Read https://github.com/vercel/vercel/discussions/6197
+
 #### Node + Python
 
 When running Next, you'll want everything to run on `localhost:3000`, but you'll have 2 servers: one for Node, one for Python. This require some rewriting logic to work.
