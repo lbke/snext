@@ -65,6 +65,14 @@ Also, we may have multiple API routes, that will act as serverless functions whe
 -  https://werkzeug.palletsprojects.com/en/1.0.x/middleware/dispatcher/
 - Dispatcher for Sanic: https://github.com/ashleysommer/sanic-dispatcher/blob/master/sanic_dispatcher/extension.py#L131
 
+#### About Vercel CLI
+
+Vercel CLI command `vercel dev` is able to simulate a serverless environment locally, so you can test your API routes.
+
+- If you put all routes in `./api/`, `vercel dev` will make Python API routes available + Next pages
+- If you put all API routes in `./pages/api`, `vercel dev` will make Node.js API routes available + Next pages
+
+**This means you have to pick either Python or Node for your API routes, you can't mix both as far as I can tell.**
 
 ##### Questions
 
