@@ -36,6 +36,10 @@ source ./venv/bin/activate
 - https://medium.com/swlh/build-a-twitter-login-component-using-nextjs-and-python-flask-44c17f057096
 - https://github.com/vercel/next.js/discussions/15846
 
+## TODO
+
+- Investigate how much `vercel` CLI can solve our issues (see [https://vercel.com/docs/cli#commands/dev](https://vercel.com/docs/cli#commands/dev))
+
 ## Main blockers
 
 ### Running 2 (or more) servers on the same port
@@ -60,7 +64,7 @@ Also, we may have multiple API routes, that will act as serverless functions whe
 ##### Possible solutions
 
 - We have a partial solution with Sanic Dispatcher, see "python-server.py". It rely on a main server, that dispatch the request to Sanic apps, so you have only one server and yet can run multiple API routes
-- We still need to automated the import of relevant routes. Using a kind of Webpack-like magic, but in Python.
+- We still need to automate the import of relevant routes. Using a kind of Webpack-like magic, but in Python.
 -  https://peterhaas-me.medium.com/how-to-run-multiple-flask-applications-from-the-same-server-9ca2c0ad7bb3
 -  https://werkzeug.palletsprojects.com/en/1.0.x/middleware/dispatcher/
 - Dispatcher for Sanic: https://github.com/ashleysommer/sanic-dispatcher/blob/master/sanic_dispatcher/extension.py#L131
