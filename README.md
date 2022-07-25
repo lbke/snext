@@ -64,7 +64,8 @@ source ./venv/bin/activate
 - [ ] Test local build
 - [ ] Test vercel deployment
 - [ ] Improve dev experience with Python, which is a bit more tedious than using JS (virtual env)?
-- [ ] Build with `p
+- [ ] Build with "pkg"
+- [ ] Try using a "Pipfile" more similar to package.json: https://github.com/pypa/pipfile
 
 ## Main blockers
 
