@@ -36,3 +36,14 @@ yarn-error.log*
 # Snext Python
 /venv
 **__pycache**
+
+# Yarn 2
+# https://stackoverflow.com/questions/62456078/yarn-install-leads-to-cannot-find-module-yarn-berry-js
+.yarn/*
+.pnp.*
+# Keep those in the repo to have a share version
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
