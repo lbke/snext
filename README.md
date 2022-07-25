@@ -4,13 +4,29 @@ Snext is a Next.js application that lets you create API routes in Python.
 
 Snext, because it sounds like "snake"🐍. You know, like a Python.
 
-**/!\ /!\ /!\ This is an early experiment, and doesn't actually work!**
+**/!\ /!\ /!\ This is an early experiment**
 
-## Start with Python
+## Start with Python 🐍
+
+Hey, if you end up there, you are probably a JavaScript developer and Python is only your second language. 
+
+Here is how to setup an efficient Python environment.
+
+### Install Python
 
 I suggest using [Pyenv](https://github.com/pyenv/pyenv) to install Python. Consider it as an equivalent to Node Version Manager or Volta but for Python.
 
-### Very first run
+This is equivalent to using [Volta](https://volta.sh/) or [NVM](https://github.com/nvm-sh/nvm) in the Node ecosystem.
+
+### Very first run: setup a virtual environment.
+
+Python doesn't have a `node_modules` folder. That's maybe for the best, however it makes it quite hard to 
+handle dependencies when you have a lot of projects on your machine.
+
+A virtual environment is a bit similar: it will tell Python to install packages locally to your current project,
+and not globally.
+
+The difference with Node is that you must enable them systematically.
 
 Setup a Virtual environment and install the Python packages:
 
@@ -28,6 +44,11 @@ You need to activate the virtual env when you start working:
 source ./venv/bin/activate
 ```
 
+**This command doesn't work in NPM scripts, sadly.** You have to type it everytime.
+
+## Get started
+
+
 ## Various resources and inspirations
 
 - Discussion on Vercel Github: https://github.com/vercel/vercel/discussions/4023
@@ -43,10 +64,11 @@ source ./venv/bin/activate
 - [ ] Test local build
 - [ ] Test vercel deployment
 - [ ] Improve dev experience with Python, which is a bit more tedious than using JS (virtual env)?
+- [ ] Build with `p
 
 ## Main blockers
 
-### 1) Running 2 (or more) servers on the same port for Python and Node SOLVED
+### 1) Running 2 (or more) servers on the same port for Python and Node **SOLVED**
 
 #### Solution:
 
@@ -92,7 +114,19 @@ The recommended pattern to get static data from you API routes in Next, is to re
 
 Needs to be tested with Vercel CLI.
 
+### 3) Runtime failure
+
+We have this error `https://github.com/vercel/community/discussions/103` in the latest version, the Python runtime seems too big.
+See https://github.com/vercel/community/discussions/103#discussioncomment-1052162
+See https://github.com/vercel/vercel/issues/2830
+
 ## Secondary issues
+
+### Can't have vercel dev as the dev command
+
+See https://github.com/vercel/vercel/blob/main/errors/now-dev-as-dev-script.md
+
+The script must be named smth else for instance `dev:vercel` otherwise it creates an infinite loop.
 
 ### Underscore in Python folder names
 

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vercel dev",
+    "//dev:vercel": "NOTE: vercel won't allow you to call this script just 'dev'",
+    "dev:vercel": "vercel dev",
     "build": "next build",
     "start": "next start",
     "setup-venv": "python3 -m venv ./venv/ --without-pip",
@@ -12,9 +13,12 @@
     "postinstall": "yarn run install-python"
   },
   "dependencies": {
-    "next": "10.2.0",
+    "next": "latest",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
-  "packageManager": "yarn@3.2.2"
+  "packageManager": "yarn@3.2.2",
+  "optionalDependencies": {
+    "vercel": "latest"
+  }
 }
